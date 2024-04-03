@@ -311,26 +311,26 @@ function ende(){
     clearInterval(hase_move);
     
 
-    let reltry = document.createElement("div");
-    reltry.id = "knopf";
-    reltry.addEventListener("click" , spiel_erneut);
-    reltry.addEventListener("click" , spiel_start);
-    reltry.style.height = 125 +"px";
-    reltry.style.width = 300+"px";
-    reltry.style.top = 350+"px";
-    reltry.style.left =700+"px";
-    reltry.style.backgroundColor = "red";
-    reltry.style.backgroundImage = "linear-gradient(45deg, rgba(36,0,0,1) 6%, rgba(115,9,10,1) 72%, rgba(121,9,9,1) 100%)";
-    reltry.style.borderWidth = 10+"px";
-    reltry.style.borderStyle = "dotted";
-    reltry.style.borderColor = "yellow";
-    reltry.style.borderRadius = 20+"px";
-    reltry.style.position = "fixed";
-    reltry.innerHTML = "Erneut"
-    reltry.style.fontSize = 100+"px";
-    reltry.style.color = "#b4c829";
-    reltry.style.textAlign = "center";
-    document.body.appendChild(reltry);
+    let retry = document.createElement("div");
+    retry.id = "knopf";
+    retry.addEventListener("click" , spiel_erneut);
+    retry.addEventListener("click" , spiel_start);
+    retry.style.height = 125 +"px";
+    retry.style.width = 300+"px";
+    retry.style.top = 350+"px";
+    retry.style.left =700+"px";
+    retry.style.backgroundColor = "red";
+    retry.style.backgroundImage = "linear-gradient(45deg, rgba(36,0,0,1) 6%, rgba(115,9,10,1) 72%, rgba(121,9,9,1) 100%)";
+    retry.style.borderWidth = 10+"px";
+    retry.style.borderStyle = "dotted";
+    retry.style.borderColor = "yellow";
+    retry.style.borderRadius = 20+"px";
+    retry.style.position = "fixed";
+    retry.innerHTML = "Erneut"
+    retry.style.fontSize = 100+"px";
+    retry.style.color = "#b4c829";
+    retry.style.textAlign = "center";
+    document.body.appendChild(retry);
 
     let endscore = document.createElement("div");
     endscore.id = "endscore";
