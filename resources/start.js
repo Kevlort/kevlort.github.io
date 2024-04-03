@@ -116,7 +116,7 @@ function spiel_start(){
     kreis.style.borderStyle = "solid";
     kreis.style.borderColor = "red";
 
-    document.body.appendChild(keirsi);
+    document.body.appendChild(kreis);
 
     let kill_score = document.createElement("div");
     kill_score.id = "kill_score";
