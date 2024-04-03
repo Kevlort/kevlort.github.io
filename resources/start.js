@@ -4,14 +4,14 @@ let schuss_a =3;
 let h = 0;
 let h_n = 0;
 let score = 0;
-let heigscor = 0;
+let highscore = 0;
 let zeit_i;
 let lauft = false;
 let ziel_x=0;
 let ziel_y=0;
 let start_x=0;
 let start_y=0;
-let hase_ausge;
+let hase_random_id;
 let standort;
 function start_fenster(){
     let hintergrund = document.createElement("div");
@@ -26,7 +26,7 @@ function start_fenster(){
 
 
     let start_button = document.createElement("div");
-    start_button.id = "konpf";
+    start_button.id = "knopf";
     start_button.addEventListener("click" , spiel_start);
     start_button.style.height = 125 +"px";
     start_button.style.width = 300+"px";
@@ -48,7 +48,7 @@ function start_fenster(){
 
 function spiel_start(){
     
-    let der_knopf =document.getElementById("konpf");
+    let der_knopf =document.getElementById("knopf");
     der_knopf.remove();
 
     let wiese = document.createElement("div");
@@ -106,29 +106,29 @@ function spiel_start(){
     mauer.style.position = "fixed";
     document.body.appendChild(mauer);
 
-    let keirsi = document.createElement("div");
-     keirsi.id = "kreis"
-    keirsi.style.height = 100+"px";
-    keirsi.style.width =100 +"px";
-    keirsi.style.position = "fixed";
-    keirsi.style.borderRadius = 50+"%";
-    keirsi.style.borderWidth = 10+"px";
-    keirsi.style.borderStyle = "solid";
-    keirsi.style.borderColor = "red";
+    let kreis = document.createElement("div");
+     kreis.id = "kreis"
+    kreis.style.height = 100+"px";
+    kreis.style.width =100 +"px";
+    kreis.style.position = "fixed";
+    kreis.style.borderRadius = 50+"%";
+    kreis.style.borderWidth = 10+"px";
+    kreis.style.borderStyle = "solid";
+    kreis.style.borderColor = "red";
 
-    document.body.appendChild(keirsi);
+    document.body.appendChild(kreis);
 
-    let kill_scor = document.createElement("div");
-    kill_scor.id = "kill_scor";
-    kill_scor.style.width = 30+"%";
-    kill_scor.style.height = 10+"%";
-    kill_scor.style.right = 0+"px";
-    kill_scor.style.top = 0 +"px";
-    kill_scor.style.color = "#b4c829";
-    kill_scor.style.fontSize = 30+"px";
-    kill_scor.innerHTML =  "Score: "+score;
-    kill_scor.style.position = "fixed";
-    document.body.appendChild(kill_scor);
+    let kill_score = document.createElement("div");
+    kill_score.id = "kill_score";
+    kill_score.style.width = 30+"%";
+    kill_score.style.height = 10+"%";
+    kill_score.style.right = 0+"px";
+    kill_score.style.top = 0 +"px";
+    kill_score.style.color = "#b4c829";
+    kill_score.style.fontSize = 30+"px";
+    kill_score.innerHTML =  "Score: "+score;
+    kill_score.style.position = "fixed";
+    document.body.appendChild(kill_score);
 
     let zeit = document.createElement("div");
     zeit.id = "zeit";
@@ -141,29 +141,29 @@ function spiel_start(){
     zeit.innerHTML =  min+":"+sec;
     zeit.style.position = "fixed";
     document.body.appendChild(zeit);
-    zeit_i = setInterval(zeitt, 1000);
+    zeit_i = setInterval(countdown, 1000);
     
     hase_move = setInterval(tick,10);
     
 
 
-    let forground = document.createElement("div");
-    forground.id = "forground";
-    forground.addEventListener("mousemove",function(event){visir(event)});
-    forground.addEventListener("click",function(event){schuss(event)});
-    forground.style.width = 100+"%";
-    forground.style.height = 100+"%";
-    forground.style.left = 0+"px";
-    forground.style.bottom = 100 +"px";
-    forground.style.position = "fixed";
-    document.body.appendChild(forground);
+    let foreground = document.createElement("div");
+    foreground.id = "foreground";
+    foreground.addEventListener("mousemove",function(event){visier(event)});
+    foreground.addEventListener("click",function(event){schuss(event)});
+    foreground.style.width = 100+"%";
+    foreground.style.height = 100+"%";
+    foreground.style.left = 0+"px";
+    foreground.style.bottom = 100 +"px";
+    foreground.style.position = "fixed";
+    document.body.appendChild(foreground);
 
     
 
      hotbar();
 }
 
-function zeitt(){
+function countdown(){
     
     if (sec == 0){
         if(min == 0){
@@ -184,7 +184,7 @@ function zeitt(){
     
 }
 
-function visir(e){
+function visier(e){
     let x = e.clientX;
     let y = e.clientY;
     let kreis = document.getElementById("kreis");
@@ -232,21 +232,21 @@ function hotbar(){
     patrone3.style.position = "fixed";
     document.body.appendChild(patrone3);
 
-    let relod = document.createElement("div");
-    relod.id = "relod";
-    relod.addEventListener("click",function(event){reloaden(event)});
-    relod.style.width = 50+"px";
-    relod.style.height = 50+"px";
-    relod.style.left = 50+"px";
-    relod.style.bottom = 25 +"px";
-    relod.style.backgroundImage = "url(resources/reload.png)";
-    relod.style.backgroundRepeat = "no-repeat";
-    relod.style.backgroundSize = 50+"px"+" "+50+"px";
-    relod.style.position = "fixed";
-    document.body.appendChild(relod);
+    let reload = document.createElement("div");
+    reload.id = "reload";
+    reload.addEventListener("click",function(event){reload_event(event)});
+    reload.style.width = 50+"px";
+    reload.style.height = 50+"px";
+    reload.style.left = 50+"px";
+    reload.style.bottom = 25 +"px";
+    reload.style.backgroundImage = "url(resources/reload.png)";
+    reload.style.backgroundRepeat = "no-repeat";
+    reload.style.backgroundSize = 50+"px"+" "+50+"px";
+    reload.style.position = "fixed";
+    document.body.appendChild(reload);
 }
 
-function reloaden(){
+function reload_event(){
     schuss_a = 3;
     for (let i = 1; i <= schuss_a; i++) {
         document.getElementById("patrone"+i).style.backgroundImage = "url(resources/patrone.png)";
@@ -270,7 +270,7 @@ function hasen_spawn(){
     let hase = document.createElement("div");
     hase.id = "hase"+h_n;
     hase.className = "hase";
-    hase.addEventListener("mousemove",function(event){visir(event)});
+    hase.addEventListener("mousemove",function(event){visier(event)});
     hase.addEventListener("click",function(event){kill(hase,event)});
     hase.addEventListener("click",function(event){schuss(event)});
     hase.style.width = 50+"px";
@@ -290,7 +290,7 @@ function kill(hase,event){
         hase.remove();
         score++;
         h--;
-        document.getElementById("kill_scor").innerHTML = "Score: "+score;
+        document.getElementById("kill_score").innerHTML = "Score: "+score;
     }
 }
 
@@ -301,88 +301,88 @@ function ende(){
     document.getElementById("loch").remove();
     document.getElementById("mauer").remove();
     document.getElementById("kreis").remove();
-    document.getElementById("kill_scor").remove();
+    document.getElementById("kill_score").remove();
     document.getElementById("zeit").remove();
-    document.getElementById("forground").remove();
+    document.getElementById("foreground").remove();
     document.getElementById("patrone1").remove();
     document.getElementById("patrone2").remove();
     document.getElementById("patrone3").remove();
-    document.getElementById("relod").remove();
+    document.getElementById("reload").remove();
     clearInterval(hase_move);
     
 
-    let Erneut_button = document.createElement("div");
-    Erneut_button.id = "konpf";
-    Erneut_button.addEventListener("click" , spiel_erneut);
-    Erneut_button.addEventListener("click" , spiel_start);
-    Erneut_button.style.height = 125 +"px";
-    Erneut_button.style.width = 300+"px";
-    Erneut_button.style.top = 350+"px";
-    Erneut_button.style.left =700+"px";
-    Erneut_button.style.backgroundColor = "red";
-    Erneut_button.style.backgroundImage = "linear-gradient(45deg, rgba(36,0,0,1) 6%, rgba(115,9,10,1) 72%, rgba(121,9,9,1) 100%)";
-    Erneut_button.style.borderWidth = 10+"px";
-    Erneut_button.style.borderStyle = "dotted";
-    Erneut_button.style.borderColor = "yellow";
-    Erneut_button.style.borderRadius = 20+"px";
-    Erneut_button.style.position = "fixed";
-    Erneut_button.innerHTML = "Erneut"
-    Erneut_button.style.fontSize = 100+"px";
-    Erneut_button.style.color = "#b4c829";
-    Erneut_button.style.textAlign = "center";
-    document.body.appendChild(Erneut_button);
+    let retry = document.createElement("div");
+    retry.id = "knopf";
+    retry.addEventListener("click" , spiel_erneut);
+    retry.addEventListener("click" , spiel_start);
+    retry.style.height = 125 +"px";
+    retry.style.width = 300+"px";
+    retry.style.top = 350+"px";
+    retry.style.left =700+"px";
+    retry.style.backgroundColor = "red";
+    retry.style.backgroundImage = "linear-gradient(45deg, rgba(36,0,0,1) 6%, rgba(115,9,10,1) 72%, rgba(121,9,9,1) 100%)";
+    retry.style.borderWidth = 10+"px";
+    retry.style.borderStyle = "dotted";
+    retry.style.borderColor = "yellow";
+    retry.style.borderRadius = 20+"px";
+    retry.style.position = "fixed";
+    retry.innerHTML = "Erneut"
+    retry.style.fontSize = 100+"px";
+    retry.style.color = "#b4c829";
+    retry.style.textAlign = "center";
+    document.body.appendChild(retry);
 
-    let entscor = document.createElement("div");
-    entscor.id = "entscor";
-    entscor.style.height = 125 +"px";
-    entscor.style.width = 300+"px";
-    entscor.style.top = 50+"px";
-    entscor.style.left =700+"px";
-    entscor.style.position = "fixed";
-    entscor.style.fontSize = 50+"px";
-    entscor.style.textAlign = "center";
-    entscor.style.color = "#b4c829";
-    entscor.innerHTML = "Punkte: "+score;
-    document.body.appendChild(entscor);
+    let endscore = document.createElement("div");
+    endscore.id = "endscore";
+    endscore.style.height = 125 +"px";
+    endscore.style.width = 300+"px";
+    endscore.style.top = 50+"px";
+    endscore.style.left =700+"px";
+    endscore.style.position = "fixed";
+    endscore.style.fontSize = 50+"px";
+    endscore.style.textAlign = "center";
+    endscore.style.color = "#b4c829";
+    endscore.innerHTML = "Punkte: "+score;
+    document.body.appendChild(endscore);
 
-    let heigscor_a = document.createElement("div");
-    heigscor_a.id = "heigscor_a";
-    heigscor_a.style.height = 125 +"px";
-    heigscor_a.style.width = 300+"px";
-    heigscor_a.style.top = 150+"px";
-    heigscor_a.style.left =700+"px";
-    heigscor_a.style.position = "fixed";
-    heigscor_a.style.fontSize = 50+"px";
-    heigscor_a.style.textAlign = "center";
-    heigscor_a.style.color = "#b4c829";
-    heigscor_a.innerHTML = "Heigscor: "+heigscor;
-    document.body.appendChild(heigscor_a);
-    let has_ub = document.getElementsByClassName("hase");
-    let anzal = has_ub.length;
+    let highscore_a = document.createElement("div");
+    highscore_a.id = "highscore_a";
+    highscore_a.style.height = 125 +"px";
+    highscore_a.style.width = 300+"px";
+    highscore_a.style.top = 150+"px";
+    highscore_a.style.left =700+"px";
+    highscore_a.style.position = "fixed";
+    highscore_a.style.fontSize = 50+"px";
+    highscore_a.style.textAlign = "center";
+    highscore_a.style.color = "#b4c829";
+    highscore_a.innerHTML = "Highscore: "+highscore;
+    document.body.appendChild(highscore_a);
+    let hasen = document.getElementsByClassName("hase");
+    let anzal = hasen.length;
     for (let t = 0; t <= anzal; t++) {
-        const element = has_ub[0];
+        const element = hasen[0];
         element.remove();
     }
     
 }
 
 function spiel_erneut(){
-    document.getElementById("entscor").remove();
-    document.getElementById("heigscor_a").remove();
+    document.getElementById("endscore").remove();
+    document.getElementById("highscore_a").remove();
     sec = 0;
     min = 1;
     schuss_a =3;
     h = 0;
     h_n = 0;
-    if(heigscor < score){
-        heigscor= score;
+    if(highscore < score){
+        highscore = score;
     }
     score = 0;
 }
 
 function bewegung(hase_id){
         let richtig = false;
-        let enfenrung =100;
+        let entfernung = 100;
         let a_hase = document.getElementById(hase_id);
         let left_wert =a_hase.style.left.split("px");
         let bottom_wert =a_hase.style.bottom.split("px");
@@ -393,55 +393,37 @@ function bewegung(hase_id){
         let ergebnis_Y= y1;
         switch (num) {
             case 3:
-                ergebnis_X= parseFloat(ergebnis_X) + parseFloat(enfenrung);
+                ergebnis_X= parseFloat(ergebnis_X) + parseFloat(entfernung);
                 break;
+                
             case 4:
-                ergebnis_X= parseFloat(ergebnis_X)+ parseFloat(enfenrung);
-                ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(enfenrung);
+                ergebnis_X= parseFloat(ergebnis_X)+ parseFloat(entfernung);
+                ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(entfernung);
                 break;
-
-            // case 2:
-            //     ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(enfenrung);
-            //     break;
 
             case 0:
-                ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(enfenrung);
-                ergebnis_X=parseFloat(ergebnis_X)- parseFloat(enfenrung);
+                ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(entfernung);
+                ergebnis_X=parseFloat(ergebnis_X)- parseFloat(entfernung);
                 break;
 
             case 1:
-                ergebnis_X=parseFloat(ergebnis_X)- parseFloat(enfenrung);
+                ergebnis_X=parseFloat(ergebnis_X)- parseFloat(entfernung);
                 break;
 
             case 2:
-                ergebnis_X=parseFloat(ergebnis_X)- parseFloat(enfenrung);
-                ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(enfenrung);
+                ergebnis_X=parseFloat(ergebnis_X)- parseFloat(entfernung);
+                ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(entfernung);
                 break;
 
-            // case 6:
-            //     ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(enfenrung);
-            //     break;
-
             case 5:
-                ergebnis_X=parseFloat(ergebnis_X)+ parseFloat(enfenrung);
-                ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(enfenrung);
+                ergebnis_X=parseFloat(ergebnis_X)+ parseFloat(entfernung);
+                ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(entfernung);
                 break;
         
             default:
                 break;
         }
-        // if (x1<0 ){
-        //     a_hase.style.left = 50+"px";
-        // }
-        // if(x1>1200){
-        //     a_hase.style.left = 1150+"px";
-        // }
-        // if(y1>700){
-        //     a_hase.style.bottom = 650+"px";
-        // }
-        // if(y1<100){
-        //     a_hase.style.bottom = 150+"px";
-        // }
+
         if (ergebnis_X >0) {
             if(ergebnis_X<1200){
                 richtig = true;
@@ -454,24 +436,25 @@ function bewegung(hase_id){
         }
         
         if(richtig== true){
-            return ergebnis_X+";"+ergebnis_Y+";"+hase_id+";"+x1+";"+y1;
+            return ergebnis_X +";"+ ergebnis_Y +";"+ hase_id +";"+ x1 +";"+ y1;
         }
 }
 
+
 function tick(){
     if (lauft == false){
-        let has_ub = document.getElementsByClassName("hase");
-        let hasenpl =has_ub[Math.floor(Math.random()*has_ub.length)]
-        let zeil =bewegung(hasenpl.id).split(";");
-        ziel_x = zeil[0];
-        ziel_y = zeil[1];
-        hase_ausge = zeil[2];
-        start_x = zeil[3];
-        start_y = zeil[4];
+        let hasen = document.getElementsByClassName("hase");
+        let hase_random = hasen[Math.floor(Math.random()*hasen.length)]
+        let ziel_raw = bewegung(hase_random.id).split(";");
+        ziel_x = ziel_raw[0];
+        ziel_y = ziel_raw[1];
+        hase_random_id = ziel_raw[2];
+        start_x = ziel_raw[3];
+        start_y = ziel_raw[4];
         standort = start_x;
         lauft = true;
     }else{
-    let hohe = 0.05;
+    let hoehe = 0.05;
     let p;
     let q;
     let ergebins_1 =parseFloat( start_y-start_x**2);
@@ -480,10 +463,10 @@ function tick(){
     let ergebins_4 = parseFloat(start_x-ziel_x);
     p = parseFloat(ergebins_3/ergebins_4);
     q= parseFloat((start_x**2+start_x*p-start_y)/-1);
-    let y = parseFloat(hohe*(standort**2+p*standort+q)*-1+start_y*(1+hohe));
+    let y = parseFloat(hoehe*(standort**2+p*standort+q)*-1+start_y*(1+hoehe));
     
 
-    let neupos= document.getElementById(hase_ausge);
+    let neupos= document.getElementById(hase_random_id);
     if (neupos == null){
         lauft = false;
     }else{
