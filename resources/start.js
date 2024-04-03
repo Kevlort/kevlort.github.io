@@ -11,7 +11,7 @@ let ziel_x=0;
 let ziel_y=0;
 let start_x=0;
 let start_y=0;
-let hase_ausge;
+let hase_random_id;
 let standort;
 function start_fenster(){
     let hintergrund = document.createElement("div");
@@ -357,10 +357,10 @@ function ende(){
     highscore_a.style.color = "#b4c829";
     highscore_a.innerHTML = "Highscore: "+highscore;
     document.body.appendChild(highscore_a);
-    let has_ub = document.getElementsByClassName("hase");
-    let anzal = has_ub.length;
+    let hasen = document.getElementsByClassName("hase");
+    let anzal = hasen.length;
     for (let t = 0; t <= anzal; t++) {
-        const element = has_ub[0];
+        const element = hasen[0];
         element.remove();
     }
     
@@ -382,7 +382,7 @@ function spiel_erneut(){
 
 function bewegung(hase_id){
         let richtig = false;
-        let entfernung =100;
+        let entfernung = 100;
         let a_hase = document.getElementById(hase_id);
         let left_wert =a_hase.style.left.split("px");
         let bottom_wert =a_hase.style.bottom.split("px");
@@ -395,14 +395,11 @@ function bewegung(hase_id){
             case 3:
                 ergebnis_X= parseFloat(ergebnis_X) + parseFloat(entfernung);
                 break;
+                
             case 4:
                 ergebnis_X= parseFloat(ergebnis_X)+ parseFloat(entfernung);
                 ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(entfernung);
                 break;
-
-            // case 2:
-            //     ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(entfernung);
-            //     break;
 
             case 0:
                 ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(entfernung);
@@ -418,10 +415,6 @@ function bewegung(hase_id){
                 ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(entfernung);
                 break;
 
-            // case 6:
-            //     ergebnis_Y=parseFloat(ergebnis_Y)+ parseFloat(entfernung);
-            //     break;
-
             case 5:
                 ergebnis_X=parseFloat(ergebnis_X)+ parseFloat(entfernung);
                 ergebnis_Y=parseFloat(ergebnis_Y)- parseFloat(entfernung);
@@ -430,18 +423,7 @@ function bewegung(hase_id){
             default:
                 break;
         }
-        // if (x1<0 ){
-        //     a_hase.style.left = 50+"px";
-        // }
-        // if(x1>1200){
-        //     a_hase.style.left = 1150+"px";
-        // }
-        // if(y1>700){
-        //     a_hase.style.bottom = 650+"px";
-        // }
-        // if(y1<100){
-        //     a_hase.style.bottom = 150+"px";
-        // }
+
         if (ergebnis_X >0) {
             if(ergebnis_X<1200){
                 richtig = true;
@@ -454,20 +436,21 @@ function bewegung(hase_id){
         }
         
         if(richtig== true){
-            return ergebnis_X+";"+ergebnis_Y+";"+hase_id+";"+x1+";"+y1;
+            return ergebnis_X +";"+ ergebnis_Y +";"+ hase_id +";"+ x1 +";"+ y1;
         }
 }
 
+
 function tick(){
     if (lauft == false){
-        let has_ub = document.getElementsByClassName("hase");
-        let hasenpl =has_ub[Math.floor(Math.random()*has_ub.length)]
-        let zeil =bewegung(hasenpl.id).split(";");
-        ziel_x = zeil[0];
-        ziel_y = zeil[1];
-        hase_ausge = zeil[2];
-        start_x = zeil[3];
-        start_y = zeil[4];
+        let hasen = document.getElementsByClassName("hase");
+        let hase_random = hasen[Math.floor(Math.random()*hasen.length)]
+        let ziel_raw = bewegung(hase_random.id).split(";");
+        ziel_x = ziel_raw[0];
+        ziel_y = ziel_raw[1];
+        hase_random_id = ziel_raw[2];
+        start_x = ziel_raw[3];
+        start_y = ziel_raw[4];
         standort = start_x;
         lauft = true;
     }else{
@@ -483,7 +466,7 @@ function tick(){
     let y = parseFloat(hoehe*(standort**2+p*standort+q)*-1+start_y*(1+hoehe));
     
 
-    let neupos= document.getElementById(hase_ausge);
+    let neupos= document.getElementById(hase_random_id);
     if (neupos == null){
         lauft = false;
     }else{
