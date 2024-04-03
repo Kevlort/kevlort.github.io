@@ -234,7 +234,7 @@ function hotbar(){
 
     let reload = document.createElement("div");
     reload.id = "reload";
-    reload.addEventListener("click",function(event){reload(event)});
+    reload.addEventListener("click",function(event){reload_event(event)});
     reload.style.width = 50+"px";
     reload.style.height = 50+"px";
     reload.style.left = 50+"px";
@@ -246,7 +246,7 @@ function hotbar(){
     document.body.appendChild(reload);
 }
 
-function reload(){
+function reload_event(){
     schuss_a = 3;
     for (let i = 1; i <= schuss_a; i++) {
         document.getElementById("patrone"+i).style.backgroundImage = "url(resources/patrone.png)";
