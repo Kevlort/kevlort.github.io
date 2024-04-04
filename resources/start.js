@@ -442,6 +442,7 @@ function bewegung(hase_id){
 
 
 function tick(){
+    if (h> 0){
     if (lauft == false){
         let hasen = document.getElementsByClassName("hase");
         let hase_random = hasen[Math.floor(Math.random()*hasen.length)]
@@ -485,6 +486,7 @@ function tick(){
     }
     }
 
+    }
     }
     
 }
