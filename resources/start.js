@@ -17,8 +17,8 @@ function start_fenster(){
     let hintergrund = document.createElement("div");
     hintergrund.id = "hintergund";
     hintergrund.style.position = "fixed";
-    hintergrund.style.height= 1000+"px";
-    hintergrund.style.width = 2000+"px";
+    hintergrund.style.height= 100+"%";
+    hintergrund.style.width = 100+"%";
     hintergrund.style.top = 0+"px";
     hintergrund.style.left = 0+"px";
     hintergrund.style.backgroundImage = "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(41,159,200,1) 72%, rgba(11,164,186,1) 100%)";
